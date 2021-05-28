@@ -1,2 +1,46 @@
 ---
-# tasks file for apache
+#- name: check index.html
+ # stat:
+  #  path: /var/www/html/index.html
+ # register: http_index
+
+#- name: back up index.html
+#  copy:
+#    src: index.html
+#   dest: /var/www/html/index.html
+
+- name: Install apache
+  yum:
+    name: httpd
+    state: present
+#  when:
+
+- name: Create custom index.html
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+  #  backup: yes
+ # when: http_index.stat.exists 
+ 
+#- name: check the value of http_index
+ # debug:
+  #  var: http_index
+- name: enable apache (httpd)
+  service:
+    name: httpd
+    enabled: yes
+   
+- name: Start apache
+  service:
+    name: httpd
+    state: started
+
+#- name: Reconfgire apache port
+ # template:
+  #  src: httpd.conf.j2
+   # dest: /etc/httpd/conf/httpd.conf
+ # notify: 
+  #  - Restart apache
+... 
+
+

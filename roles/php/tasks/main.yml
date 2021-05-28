@@ -1,2 +1,19 @@
 ---
-# tasks file for php
+
+#- name: Install PHP
+ # yum:
+  #  name: ['php','php-mysql']
+   # state: present
+
+#- name: Restart Apache
+ # service:
+  #  name: httpd
+   # state: restarted
+
+- name: Creates the index.php file 
+  template: 
+    src: index.php.j2 
+    dest: /var/www/html/index.php
+
+...
+
