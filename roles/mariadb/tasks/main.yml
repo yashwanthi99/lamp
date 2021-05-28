@@ -10,10 +10,7 @@
   service:
     name: mariadb
     state: started
-
-- name: Enable mariadb
-  service:
-    name: mariadb
     enabled: yes
+
 
 ...

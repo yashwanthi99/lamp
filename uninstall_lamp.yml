@@ -1,0 +1,16 @@
+---
+- hosts: webserver
+  tasks: 
+  
+  - name: Stop mariadb
+    service: 
+      name: mariadb
+      state: stopped
+      enabled: no
+
+  - name: Uninstall mariadb
+    yum: 
+      name: mariadb
+      state: absent
+...
+

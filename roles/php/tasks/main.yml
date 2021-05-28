@@ -1,9 +1,9 @@
 ---
 
-#- name: Install PHP
- # yum:
-  #  name: ['php','php-mysql']
-   # state: present
+- name: Install PHP
+  yum:
+    name: ['php','php-mysql']
+    state: present
 
 #- name: Restart Apache
  # service:
@@ -11,8 +11,8 @@
    # state: restarted
 
 - name: Creates the index.php file 
-  template: 
-    src: index.php.j2 
+  copy: 
+    src: index.php 
     dest: /var/www/html/index.php
 
 ...
